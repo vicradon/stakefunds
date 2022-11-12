@@ -56,6 +56,10 @@ Route.group(() => {
   })
 }).prefix('/auth')
 
+Route.group(() => {
+  Route.resource("stake", "StakesController")
+}).middleware('auth:api')
+
 Route.get('/github/redirect', async ({ ally }) => {
   return ally.use('github').redirect()
 })
